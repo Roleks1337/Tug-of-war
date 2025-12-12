@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista projektów</title>
+</head>
+<body>
+    <h1>Projekty</h1>
+    {% if projects %}
+        <ul>
+            {% for project in projects %}
+            <li>
+                <strong>{{ project.name }}</strong><br>
+                {{ project.description }}<br>
+                Rozpoczęcie: {{ project.start_date|date:"Y-m-d" }}<br>
+                Zakończenie: {{ project.end_date|date:"Y-m-d" }}<br>
+                Pozostałe dni: {{ project.days_remaining }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak danych o projektach</p>
+    {% endif %}
+</body>
+</html>
