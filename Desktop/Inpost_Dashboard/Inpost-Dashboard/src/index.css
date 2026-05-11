@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --animate-marker-pulse: marker-pulse 1.6s ease-out infinite;
+  --animate-slide-in: slide-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes marker-pulse {
+    0% { transform: scale(0.8); opacity: 0.9; }
+    70% { transform: scale(2.4); opacity: 0; }
+    100% { transform: scale(0.8); opacity: 0; }
+  }
+
+  @keyframes slide-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+}
+
+@layer base {
+  html, body, #root {
+    @apply h-full w-full overflow-hidden bg-zinc-950 text-zinc-100 antialiased;
+  }
+}
+
+/* ============================================================
+   Leaflet Overrides — Dark Mode
+   ============================================================ */
+.leaflet-container {
+  background: #09090b !important;
+  font-family: 'Inter', sans-serif;
+}
+
+.leaflet-tooltip {
+  background: #18181b !important;
+  border: 1px solid #3f3f46 !important;
+  color: #e4e4e7 !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  font-size: 12px !important;
+}
+
+.leaflet-tooltip::before {
+  border-top-color: #3f3f46 !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #18181b !important;
+  border: 1px solid #3f3f46 !important;
+  border-radius: 12px !important;
+  color: #e4e4e7 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+.leaflet-popup-tip {
+  background: #18181b !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid #3f3f46 !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background: #18181b !important;
+  color: #a1a1aa !important;
+  border-bottom: 1px solid #3f3f46 !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  font-size: 18px !important;
+  transition: all 0.15s ease;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #27272a !important;
+  color: #facc15 !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(9, 9, 11, 0.75) !important;
+  color: #52525b !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: #71717a !important;
+}
+
+/* ============================================================
+   Selected Marker Pulse Ring
+   ============================================================ */
+.marker-pulse-ring {
+  @apply absolute inset-0 w-[36px] h-[36px] rounded-full border-[3px] animate-marker-pulse pointer-events-none z-10;
+}
+
+
+.time-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #facc15;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.time-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 5px rgba(250, 204, 21, 0.25);
+}
+
+.time-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #facc15;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.time-slider:focus {
+  outline: none;
+}
+
+
+
+/* ============================================================
+   Scrollbar Styling
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #52525b;
+}
